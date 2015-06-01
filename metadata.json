@@ -1,0 +1,15 @@
+{
+  "name": "puppet-zookeeper",
+  "version": "0.1.0-adobe-SNAPSHOT",
+  "author": "clehene@adobe.com",
+  "summary": "Docker Exhibitor Zookeeper Puppet module",
+  "license": "Apache 2.0",
+  "source": "https://git.corp.adobe.com/metal-cell/puppet-zookeeper",
+  "project_page": "https://git.corp.adobe.com/metal-cell/puppet-zookeeper",
+  "issues_url": "https://jira.corp.adobe.com/browse/HSTACK",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"puppet-docker"}
+  ]
+}
+

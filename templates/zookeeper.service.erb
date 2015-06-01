@@ -1,0 +1,32 @@
+[Unit]
+Description=Exhibitor Zookeeper
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+TimeoutStartSec=0
+TimeoutStopSec=10
+RestartSec=10
+Restart=always
+Type=notify
+NotifyAccess=all
+
+ExecStartPre=-<%= @docker_path %> rm -f <%= @container_id %>
+ExecStartPre=<%= @docker_path %> run --rm --privileged -v /opt/bin:/opt/bin ibuildthecloud/systemd-docker
+ExecStartPre=<%= @docker_path %> pull <%= @registry %>:<%= @version %>
+ExecStart=/opt/bin/systemd-docker --cgroups name=systemd run --rm \
+ --name <%= @container_id %>\
+ -p 8181:8181 -p 2181:2181 -p 2888:2888 -p 3888:3888 \
+ -e AWS_ACCESS_KEY_ID=<%= @aws_access_key_id %> \
+ -e AWS_SECRET_ACCESS_KEY=<%= @aws_secret_access_key %> \
+ -e AWS_REGION=<%= @aws_s3_region %> \
+ -e S3_BUCKET=<%= @aws_s3_bucket %> \
+ -e S3_PREFIX=<%= @aws_s3_prefix %> \
+ -e HOSTNAME=<%= @hostname %> \
+ <%= @registry %>:<%= @version %> \
+
+ ExecStopPost=-<%= @docker_path %> rm -f <%= @container_id %>
+
+[Install]
+WantedBy=multi-user.target
