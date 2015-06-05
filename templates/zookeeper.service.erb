@@ -20,7 +20,7 @@ ExecStart=/opt/bin/systemd-docker --cgroups name=systemd run --rm \
  -p 8181:8181 -p 2181:2181 -p 2888:2888 -p 3888:3888 \
  -e AWS_ACCESS_KEY_ID=<%= @aws_access_key_id %> \
  -e AWS_SECRET_ACCESS_KEY=<%= @aws_secret_access_key %> \
- -e AWS_REGION=<%= @aws_s3_region %> \
+ -e __COMMENTED__AWS_REGION=<%= @aws_s3_region %> \
  -e S3_BUCKET=<%= @aws_s3_bucket %> \
  -e S3_PREFIX=<%= @aws_s3_prefix %> \
  -e HOSTNAME=<%= @hostname %> \
