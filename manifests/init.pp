@@ -37,8 +37,8 @@ class zookeeper (
   $registry              = "mbabineau/zookeeper-exhibitor",
   $docker_path           = "/bin/docker",
   # AWS
-  $aws_access_key_id     = unset,
-  $aws_secret_access_key = unset,
+  $aws_access_key_id     = undef,
+  $aws_secret_access_key = undef,
   $aws_s3_bucket         = "zk-1",
   $aws_s3_prefix         = "zk-1",
   $aws_s3_region         = "us-west-2",
