@@ -41,7 +41,7 @@ class zookeeper (
   $aws_secret_access_key = undef,
   $aws_s3_bucket         = "zk-1",
   $aws_s3_prefix         = "zk-1",
-  $aws_s3_region         = "us-west-2",
+  $aws_s3_region         = undef,
 
   $hostname              = $::hostname,
   $service_enable        = "true",
