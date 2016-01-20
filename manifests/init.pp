@@ -48,7 +48,7 @@ class zookeeper (
   $service_ensure        = "running",
 ) {
 
-  $container_id          = "zk_${cluster_id}"
+  $container_id          = "zookeeper"
 
   include docker
   Class['zookeeper'] <- Class['docker']
