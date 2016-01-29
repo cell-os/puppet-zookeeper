@@ -69,7 +69,7 @@ class zookeeper (
     group   => 'root',
     content => template('zookeeper/zookeeper.service.erb'),
   } ->   
-  exec { 'reload-zookeeper_docker-service':
+  exec { 'reload-zookeeper-service':
     command => 'systemctl daemon-reload'
   } ->
   service { 'zookeeper':
