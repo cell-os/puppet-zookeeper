@@ -34,7 +34,7 @@
 class zookeeper (
   $cluster_id            = "zk-1",
   $version               = "latest",
-  $registry              = "mbabineau/zookeeper-exhibitor",
+  $registry              = "cellos/zookeeper-exhibitor",
   $docker_path           = "/bin/docker",
   # AWS
   $aws_access_key_id     = undef,
