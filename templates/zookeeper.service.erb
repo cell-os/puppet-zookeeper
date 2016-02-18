@@ -18,6 +18,8 @@ ExecStartPre=<%= @docker_path %> pull <%= @registry %>:<%= @version %>
 ExecStart=/opt/bin/systemd-docker --cgroups name=systemd run --rm \
  --name <%= @container_id %>\
  -p 8181:8181 -p 2181:2181 -p 2888:2888 -p 3888:3888 \
+ -v <%= @host_data_dir %>/snapshots:/opt/zookeeper/snapshots \
+ -v <%= @host_data_dir %>/transactions:/opt/zookeeper/transactions \
 <% if @aws_access_key_id -%>
  -e AWS_ACCESS_KEY_ID=<%= @aws_access_key_id %> \
  -e AWS_SECRET_ACCESS_KEY=<%= @aws_secret_access_key %> \

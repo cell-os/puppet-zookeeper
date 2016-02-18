@@ -46,12 +46,21 @@ class zookeeper (
   $hostname              = $::hostname,
   $service_enable        = "true",
   $service_ensure        = "running",
+  $host_data_dir         = "/var/zookeeper"
 ) {
 
   $container_id          = "zookeeper"
+  $directories = [$host_data_dir, "$host_data_dir/transactions", "$host_data_dir/snapshots"]
 
   include docker
   Class['zookeeper'] <- Class['docker']
+  file { $directories:
+    backup  => false,
+    ensure  => directory,
+    owner   => "root",
+    group   => "root",
+    mode    => '0744'
+  } -> 
   file { '/etc/systemd/system/zookeeper.service':
     mode    => '0644',
     owner   => 'root',
