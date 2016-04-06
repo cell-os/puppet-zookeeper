@@ -20,6 +20,9 @@ ExecStart=/opt/bin/systemd-docker --cgroups name=systemd run --rm \
  -p 8181:8181 -p 2181:2181 -p 2888:2888 -p 3888:3888 \
  -v <%= @host_data_dir %>/snapshots:/opt/zookeeper/snapshots \
  -v <%= @host_data_dir %>/transactions:/opt/zookeeper/transactions \
+<% if @fs_config_dir_host -%>
+ -v <%= @fs_config_dir_host %>:/shared/local_configs \
+<% end -%>
 <% if @aws_access_key_id -%>
  -e AWS_ACCESS_KEY_ID=<%= @aws_access_key_id %> \
  -e AWS_SECRET_ACCESS_KEY=<%= @aws_secret_access_key %> \
@@ -27,8 +30,12 @@ ExecStart=/opt/bin/systemd-docker --cgroups name=systemd run --rm \
 <% if @aws_s3_region-%>
  -e AWS_REGION=<%= @aws_s3_region %> \
 <% end -%>
+<% if @aws_s3_bucket-%>
  -e S3_BUCKET=<%= @aws_s3_bucket %> \
+<% end -%>
+<% if @aws_s3_prefix-%>
  -e S3_PREFIX=<%= @aws_s3_prefix %> \
+<% end -%>
  -e HOSTNAME=<%= @hostname %> \
  <%= @registry %>:<%= @version %> \
 

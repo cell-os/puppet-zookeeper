@@ -39,9 +39,11 @@ class zookeeper (
   # AWS
   $aws_access_key_id     = undef,
   $aws_secret_access_key = undef,
-  $aws_s3_bucket         = "zk-1",
-  $aws_s3_prefix         = "zk-1",
+  $aws_s3_bucket         = undef,
+  $aws_s3_prefix         = undef,
   $aws_s3_region         = undef,
+  # local
+  $fs_config_dir_host    = undef,
 
   $hostname              = $::hostname,
   $service_enable        = "true",
