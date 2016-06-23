@@ -1,6 +1,6 @@
 {
   "name": "puppet-zookeeper",
-  "version": "0.1.3-adobe-SNAPSHOT",
+  "version": "0.1.3-adobe",
   "author": "clehene@adobe.com",
   "summary": "Docker Exhibitor Zookeeper Puppet module",
   "license": "Apache 2.0",
